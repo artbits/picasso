@@ -23,7 +23,7 @@ public final class TestExample {
                 })
                 .addText("Microsoft", o -> {
                     o.x = 85;
-                    o.y = 165;
+                    o.y = 175;
                     o.color = Color.magenta;
                     o.font = new Font("consolas", Font.ITALIC, 16);
                 })
@@ -40,7 +40,7 @@ public final class TestExample {
                 })
                 .addText("OpenAI", o -> {
                     o.x = 590;
-                    o.y = 165;
+                    o.y = 175;
                     o.color = Color.magenta;
                     o.font = new Font("consolas", Font.ITALIC, 16);
                 });
