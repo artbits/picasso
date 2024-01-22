@@ -15,7 +15,7 @@ repositories {
 }
 
 dependencies {
-    implementation 'com.github.artbits:picasso:1.0.1'
+    implementation 'com.github.artbits:picasso:1.0.2'
 }
 ```
 Maven:
@@ -28,7 +28,7 @@ Maven:
 <dependency>
     <groupId>com.github.artbits</groupId>
     <artifactId>picasso</artifactId>
-    <version>1.0.1</version>
+    <version>1.0.2</version>
 </dependency>
 ```
 
@@ -48,7 +48,7 @@ Picasso.init(new File("material/cp-bg.png"))
         })
         .addText("Microsoft", o -> {
             o.x = 85;
-            o.y = 165;
+            o.y = 175;
             o.color = Color.magenta;
             o.font = new Font("consolas", Font.ITALIC, 16);
         })
@@ -65,7 +65,7 @@ Picasso.init(new File("material/cp-bg.png"))
         })
         .addText("OpenAI", o -> {
             o.x = 590;
-            o.y = 165;
+            o.y = 175;
             o.color = Color.magenta;
             o.font = new Font("consolas", Font.ITALIC, 16);
         })
