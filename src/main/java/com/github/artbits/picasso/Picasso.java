@@ -1,3 +1,19 @@
+/**
+ * Copyright 2024 Zhang Guanhu
+ * <p>
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ * <p>
+ * http://www.apache.org/licenses/LICENSE-2.0
+ * <p>
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 package com.github.artbits.picasso;
 
 import javax.imageio.ImageIO;
@@ -68,9 +84,7 @@ public final class Picasso {
             options.coordinates = true;
         }
         image = Editor.handle(image, options);
-        options.imageWidth = image.getWidth();
-        options.imageHeight = image.getHeight();
-        graphics2D.drawImage(image, options.getX(), options.getY(), null);
+        graphics2D.drawImage(image, getX(image, options), getY(image, options), null);
         return this;
     }
 
@@ -96,10 +110,9 @@ public final class Picasso {
     public Picasso addText(String text, Consumer<Options> consumer) {
         Options options = new Options();
         consumer.accept(options);
-        options.stringWidth = Editor.getStringWidth(text, options.font);
         graphics2D.setFont(options.font);
         graphics2D.setColor(options.color);
-        graphics2D.drawString(text, options.getX(), options.getY());
+        graphics2D.drawString(text, getX(text, options), getY(text, options));
         return this;
     }
 
@@ -160,6 +173,26 @@ public final class Picasso {
 
     public BufferedImage toBufferedImage() {
         return toBufferedImage(null);
+    }
+
+
+    private int getX(BufferedImage image, Options o) {
+        return (o.coordinates) ? o.x : o.x - image.getWidth() / 2;
+    }
+
+
+    private int getY(BufferedImage image, Options o) {
+        return (o.coordinates) ? o.y : o.y - image.getHeight() / 2;
+    }
+
+
+    private int getX(String s, Options o) {
+        return (o.coordinates) ? o.x : o.x - Editor.getFontMetrics(o.font).stringWidth(s) / 2;
+    }
+
+
+    private int getY(String s, Options o) {
+        return (o.coordinates) ? o.y : o.y - Editor.getFontMetrics(o.font).getHeight() / 2;
     }
 
 }

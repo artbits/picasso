@@ -1,3 +1,19 @@
+/**
+ * Copyright 2024 Zhang Guanhu
+ * <p>
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ * <p>
+ * http://www.apache.org/licenses/LICENSE-2.0
+ * <p>
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 package com.github.artbits.picasso;
 
 import java.awt.*;
@@ -14,34 +30,5 @@ public final class Options {
     public float quality;
     public Color color;
     public Font font;
-    Integer imageWidth;
-    Integer imageHeight;
-    Integer stringWidth;
-
-
     Options() { }
-
-
-    int getX() {
-        if (coordinates) {
-            return x;
-        }
-        if (imageWidth != null) {
-            return x - imageWidth / 2;
-        }
-        if (stringWidth != null) {
-            return x - stringWidth / 2;
-        }
-        return x;
-    }
-
-
-    int getY() {
-        return (coordinates || imageHeight == null) ? y : y - imageHeight / 2;
-//        if (coordinates || image == null) {
-//            return y;
-//        } else {
-//            return y - image.getHeight() / 2;
-//        }
-    }
 }
