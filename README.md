@@ -15,7 +15,7 @@ repositories {
 }
 
 dependencies {
-    implementation 'com.github.artbits:picasso:1.0.2'
+    implementation 'com.github.artbits:picasso:1.0.3'
 }
 ```
 Maven:
@@ -28,47 +28,27 @@ Maven:
 <dependency>
     <groupId>com.github.artbits</groupId>
     <artifactId>picasso</artifactId>
-    <version>1.0.2</version>
+    <version>1.0.3</version>
 </dependency>
 ```
 
 ## Usage
 ```java
-Picasso.init(new File("material/cp-bg.png"))
-        .addImage("https://avatars.githubusercontent.com/u/109500550?v=4", o -> {
-            o.x = 85;
-            o.y = 84;
-            o.width = 86;
-            o.height = 86;
-            o.radius = 86;
-        })
-        .addImage(new File("material/cp-frame.png"), o -> {
-            o.x = 85;
-            o.y = 75;
-        })
-        .addText("Microsoft", o -> {
-            o.x = 85;
-            o.y = 175;
-            o.color = Color.magenta;
-            o.font = new Font("consolas", Font.ITALIC, 16);
-        })
-        .addImage("https://avatars.githubusercontent.com/u/14957082?v=4", o -> {
-            o.x = 590;
-            o.y = 84;
-            o.width = 86;
-            o.height = 86;
-            o.radius = 86;
-        })
-        .addImage(new File("material/cp-frame.png"), o -> {
-            o.x = 590;
-            o.y = 75;
-        })
-        .addText("OpenAI", o -> {
-            o.x = 590;
-            o.y = 175;
-            o.color = Color.magenta;
-            o.font = new Font("consolas", Font.ITALIC, 16);
-        })
+File file1 = new File("material/cp-bg.png");
+File file2 = new File("material/cp-frame.png");
+String avatar1 = "https://avatars.githubusercontent.com/u/109500550?v=4";
+String avatar2 = "https://avatars.githubusercontent.com/u/14957082?v=4";
+String name1 = "Microsoft";
+String name2 = "OpenAI";
+Font font = new Font("consolas", Font.ITALIC, 16);
+
+Picasso.init(file1)
+        .addImage(avatar1, o -> o.location(85, 84).width(86).height(86).radius(86))
+        .addImage(file2, o -> o.location(85, 75))
+        .addText(name1, o -> o.location(85, 175).font(font).color(Color.magenta))
+        .addImage(avatar2, o -> o.location(590, 84).width(86).height(86).radius(86))
+        .addImage(file2, o -> o.location(590, 75))
+        .addText(name2, o -> o.location(590, 175).font(font).color(Color.magenta))
         .toFile("output/cp-" + System.currentTimeMillis() + ".png");
 ```
 

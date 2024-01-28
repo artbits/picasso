@@ -53,12 +53,6 @@ final class Editor {
 
 
     static BufferedImage cut(BufferedImage bufferedImage, int width, int height) {
-        if (width < 0) {
-            throw new RuntimeException("Parameter error!   width ∈ [0, +∞)");
-        }
-        if (height < 0) {
-            throw new RuntimeException("Parameter error!   height ∈ [0, +∞)");
-        }
         width = (width > 0) ? width : bufferedImage.getWidth();
         height = (height > 0) ? height : bufferedImage.getHeight();
         BufferedImage image = new BufferedImage(width, height, bufferedImage.getType());
@@ -70,9 +64,6 @@ final class Editor {
 
 
     static BufferedImage radius(BufferedImage bufferedImage, int radius) {
-        if (radius < 0) {
-            throw new RuntimeException("Parameter error!   radius ∈ [0, +∞)");
-        }
         BufferedImage image = new BufferedImage(bufferedImage.getWidth(), bufferedImage.getHeight(), BufferedImage.TYPE_INT_ARGB);
         Graphics2D graphics = image.createGraphics();
         RoundRectangle2D rectangle = new RoundRectangle2D.Float(0, 0, image.getWidth(), image.getHeight(), radius, radius);
@@ -84,9 +75,6 @@ final class Editor {
 
 
     static BufferedImage scale(BufferedImage bufferedImage, float scale) {
-        if (scale < 0) {
-            throw new RuntimeException("Parameter error!   scale ∈ [0, +∞)");
-        }
         int width = (int) (bufferedImage.getWidth() * scale);
         int height = (int) (bufferedImage.getHeight() * scale);
         BufferedImage image = new BufferedImage(width, height, bufferedImage.getType());
@@ -99,9 +87,6 @@ final class Editor {
 
 
     static BufferedImage alpha(BufferedImage bufferedImage, float alpha) {
-        if (alpha < 0 || alpha > 1) {
-            throw new RuntimeException("Parameter error!   alpha ∈ [0, 1]");
-        }
         BufferedImage image = new BufferedImage(bufferedImage.getWidth(), bufferedImage.getHeight(), bufferedImage.getType());
         Graphics2D graphics = image.createGraphics();
         graphics.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, alpha));
@@ -112,9 +97,6 @@ final class Editor {
 
 
     static BufferedImage compress(BufferedImage bufferedImage, float quality) {
-        if (quality < 0 || quality > 1) {
-            throw new RuntimeException("Parameter error!   quality ∈ [0, 1]");
-        }
         try (ByteArrayOutputStream stream = new ByteArrayOutputStream()) {
             Iterator<ImageWriter> iterator = ImageIO.getImageWritersByFormatName("JPEG");
             if (iterator.hasNext()) {
